@@ -56,14 +56,11 @@ def main():
         ret, frame = cap.read()
         if not ret:
             break
-
-        # Flip the frame horizontally for a later selfie-view display
         frame = cv2.flip(frame, 1)
         
         # Convert the BGR image to RGB
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         
-        # Process the frame and detect hands
         results = hands.process(rgb_frame)
 
         if results.multi_hand_landmarks:
